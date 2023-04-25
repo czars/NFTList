@@ -26,12 +26,6 @@ post_install do |installer|
     config.build_settings['DEAD_CODE_STRIPPING'] = 'YES'
   end
   
-  #  # Configure the Pod targets
-  #  installer.pods_project.targets.each do |target|
-  #    target.build_settings.delete 'DEAD_CODE_STRIPPING'
-  #    target.build_settings.delete 'IPHONEOS_DEPLOYMENT_TARGET'
-  #  end
-  
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|
       if Gem::Version.new('12.0') > Gem::Version.new(config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'])

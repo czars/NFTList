@@ -9,26 +9,6 @@ import Foundation
 import RxCocoa
 import RxSwift
 
-enum NFTListViewState: Equatable {
-    static func == (lhs: NFTListViewState, rhs: NFTListViewState) -> Bool {
-        switch (lhs, rhs) {
-        case (.isLoading, .isLoading),
-            (.isLoadMore, .isLoadMore),
-            (.loadFinished, .loadFinished):
-            return true
-        case let (.error(l), .error(r)):
-            return l.localizedDescription == r.localizedDescription
-        default:
-            return false
-        }
-    }
-    
-    case isLoading
-    case isLoadMore
-    case error(Error)
-    case loadFinished(isLoadMore: Bool)
-}
-
 protocol NFTListViewModelInputProtocol {
     func loadMore()
     func refresh()
